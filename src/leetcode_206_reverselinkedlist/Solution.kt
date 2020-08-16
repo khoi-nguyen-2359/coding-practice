@@ -12,15 +12,36 @@ package leetcode_206_reverselinkedlist
 
 class ListNode(var value: Int) {
     var next: ListNode? = null
+
+    fun print() {
+        var curr: ListNode? = this
+        while (curr != null) {
+            println(curr.value)
+            curr = curr.next
+        }
+    }
 }
 
 class Solution {
     fun reverseList(head: ListNode?): ListNode? {
-        println("test")
-        return null
+        var curr: ListNode? = null
+        var next: ListNode? = head
+        while (next != null) {
+            val tmp = next.next
+            next.next = curr
+            curr = next
+            next = tmp
+        }
+        return curr
     }
 }
 
 fun main(args: Array<String>) {
-    Solution().reverseList(null)
+    val head = ListNode(1).apply {
+        next = ListNode(2).apply {
+            next = ListNode(3)
+        }
+//        print()
+    }
+    Solution().reverseList(head)?.print()
 }

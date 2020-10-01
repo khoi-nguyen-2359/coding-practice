@@ -55,10 +55,37 @@ class Solution {
         return result
     }
 
+    private fun bfsTraverse(root: TreeNode?): List<Int> {
+        val queue = ArrayDeque<NodeWrap>()
+        if (root != null) {
+            queue.add(NodeWrap(root, 1))
+        }
+
+        val result = mutableListOf<Int>()
+        while (queue.isNotEmpty()) {
+            val current = queue.poll()
+            val previous = queue.peek()
+            if (current != null && (previous == null || previous.height > current.height)) {
+                result.add(current.node.`val`)
+            }
+
+            current.node.left?.let {
+                queue.add(NodeWrap(it, current.height + 1))
+            }
+            current.node.right?.let {
+                queue.add(NodeWrap(it, current.height + 1))
+            }
+        }
+
+        return result
+    }
+
     fun rightSideView(root: TreeNode?): List<Int> {
 //        traverse(root, 0)
 //        return rightSideView
 
-        return traverseIteractive(root)
+//        return traverseIteractive(root)
+
+        return bfsTraverse(root)
     }
 }

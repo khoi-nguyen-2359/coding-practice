@@ -3,13 +3,13 @@ package leetcode_79_word_search
 class Solution {
 
     private fun search(board: Array<CharArray>, i: Int, j: Int, word: String, letter: Int): Boolean {
-        if (letter == word.length) {
-            return true
-        }
-
         val target = word[letter]
         if (board[i][j] != target) {
             return false
+        }
+
+        if (letter == word.length - 1) {
+            return true
         }
 
         val rowOffsets = intArrayOf(0, 1, 0, -1)
@@ -17,7 +17,7 @@ class Solution {
         for (d in 0..3) {
             val nextI = i + rowOffsets[d]
             val nextJ = j + colOffsets[d]
-            if (nextI >= 0 && nextI < board.size && nextJ >= 0 && nextJ < board[i].size) {
+            if (nextI >= 0 && nextI < board.size && nextJ >= 0 && nextJ < board[nextI].size) {
                 val tmp = board[i][j]
                 board[i][j] = '0'
                 if (search(board, nextI, nextJ, word, letter + 1))
@@ -42,13 +42,9 @@ class Solution {
 }
 
 fun main() {
-    val board = Array(3) {
-        when (it) {
-            0 -> charArrayOf('A', 'B', 'C', 'E')
-            1 -> charArrayOf('S', 'F', 'C', 'S')
-            else -> charArrayOf('A', 'D', 'E', 'E')
-        }
+    val board = Array(1) {
+        charArrayOf('A')
     }
-    val word = "SEE"
+    val word = "A"
     Solution().exist(board, word).also(::println)
 }

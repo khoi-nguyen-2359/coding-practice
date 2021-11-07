@@ -15,7 +15,7 @@ class Solution {
         val result = CharArray(s.length)
         var current = 1
         sortedEntries.forEachIndexed { index, value ->
-            val char = (value % 100 + 'a'.toInt()).toChar()
+            val char = (value % 100 + 'a'.code).toChar()
             val counter = value / 100
             if (counter > (s.length + 1) / 2) {
                 return ""

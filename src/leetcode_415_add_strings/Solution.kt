@@ -9,12 +9,12 @@ class Solution {
             val n1 = num1.getOrNull(num1.length - i - 1)?.minus('0') ?: 0
             val n2 = num2.getOrNull(num2.length - i - 1)?.minus('0') ?: 0
             val s = n1 + n2 + carrier
-            result[maxLen - i] = ((s % 10) + '0'.toInt()).toChar()
+            result[maxLen - i] = ((s % 10) + '0'.code).toChar()
             carrier = s / 10
         }
 
         if (carrier != 0) {
-            result[0] = (carrier + '0'.toInt()).toChar()
+            result[0] = (carrier + '0'.code).toChar()
         } else {
             result[0] = ' '
         }

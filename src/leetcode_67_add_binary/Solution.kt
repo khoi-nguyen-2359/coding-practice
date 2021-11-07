@@ -35,7 +35,7 @@ class Solution {
         }
 
         if (c != 0) {
-            result.insert(0, (c + '0'.toInt()).toChar())
+            result.insert(0, (c + '0'.code).toChar())
             return result.toString()
         }
 

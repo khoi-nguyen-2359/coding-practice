@@ -25,7 +25,6 @@ class CombinationIterator(characters: String, combinationLength: Int) {
         } else {
             hasNext = false
         }
-
         return result
     }
 

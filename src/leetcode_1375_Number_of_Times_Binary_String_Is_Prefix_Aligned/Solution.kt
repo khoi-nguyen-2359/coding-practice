@@ -8,14 +8,11 @@ class Solution {
         for (i in flips.indices) {
             mask[i] = '1'
             binString[flips[i] - 1] = '1'
-//            println(binString)
-//            println(mask)
-            for (j in 0..i) {
+            ++count
+            for (j in flips.indices) {
                 if (mask[j] != binString[j]) {
+                    --count
                     break
-                }
-                if (j == i && mask[j] == binString[j]) {
-                    ++count
                 }
             }
         }

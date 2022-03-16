@@ -1,4 +1,4 @@
-package leetcode_break_a_palindrome
+package leetcode_1328_break_a_palindrome
 
 class Solution {
     fun breakPalindrome(palindrome: String): String {

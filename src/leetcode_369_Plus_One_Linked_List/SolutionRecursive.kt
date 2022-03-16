@@ -1,4 +1,4 @@
-package misc_adding_one_to_linked_list_num
+package leetcode_369_Plus_One_Linked_List
 
 class Node(var value: Int) {
     var next: Node? = null

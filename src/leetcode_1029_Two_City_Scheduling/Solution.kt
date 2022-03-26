@@ -55,21 +55,16 @@ class SolutionInPlace {
         }
         val diffSize = abs(countA - countB) / 2
         if (diffSize != 0) {
-            if (countA > countB) {
-                costs.sortBy {
-                    if (it[1] == 1) {
-                        it[0]
-                    } else {
-                        Int.MAX_VALUE
-                    }
-                }
+            mark = if (countA > countB) {
+                1
             } else {
-                costs.sortBy {
-                    if (it[1] == -1) {
-                        it[0]
-                    } else {
-                        Int.MAX_VALUE
-                    }
+                -1
+            }
+            costs.sortBy {
+                if (it[1] == mark) {
+                    it[0]
+                } else {
+                    Int.MAX_VALUE
                 }
             }
             repeat(diffSize) {

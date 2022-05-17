@@ -30,3 +30,8 @@ fun main() {
     head?.next = head
     Solution().hasCycle(head).let(::println)
 }
+
+/*
+Input: 1,2,3,4,2
+2,3     3,2
+ */

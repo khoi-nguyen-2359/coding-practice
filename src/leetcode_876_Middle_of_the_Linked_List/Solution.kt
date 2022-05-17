@@ -34,7 +34,6 @@ fun main() {
     ).forEach {
         Solution().middleNode(it)?.`val`?.let(::println)
     }
-
 }
 
 /*

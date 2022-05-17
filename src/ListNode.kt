@@ -4,8 +4,11 @@ class ListNode(var `val`: Int) {
     fun print() {
         var curr: ListNode? = this
         while (curr != null) {
-            println(curr.`val`)
+            print(curr.`val`)
             curr = curr.next
+            if (curr != null) {
+                print("->")
+            }
         }
     }
 

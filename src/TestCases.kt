@@ -6,4 +6,17 @@ object TestCases {
             intArrayOf(49,35,35,44,26,8,22,26,27,34),
             intArrayOf()
     )
+
+    fun swap(array: IntArray, i: Int, j: Int) {
+        val tmp = array[i]
+        array[i] = array[j]
+        array[j] = tmp
+    }
+
+    fun printlnArray(array: IntArray) {
+        array.forEach {
+            print("$it ")
+        }
+        println()
+    }
 }

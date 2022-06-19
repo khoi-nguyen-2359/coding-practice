@@ -41,6 +41,6 @@ fun partition(array: IntArray, low: Int, high: Int): Int {
 fun main() {
     TestCases.unsortedIntArrays.forEach {
         quickSort(it, 0, it.size - 1)
-        printlnArray(it)
+        printlnArray(it.toTypedArray())
     }
 }

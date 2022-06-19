@@ -13,9 +13,9 @@ object TestCases {
         array[j] = tmp
     }
 
-    fun printlnArray(array: IntArray) {
+    fun <T> printlnArray(array: Array<T>, delim: String = " ") {
         array.forEach {
-            print("$it ")
+            print("$it$delim")
         }
         println()
     }

@@ -1,0 +1,1 @@
+class Interval(val start: Int, val end: Int)

@@ -20,17 +20,24 @@ class Solution {
      * @return: the minimum number of conference rooms required
      */
     fun minMeetingRooms(intervals: List<Interval?>): Int {
-        val sorted = intervals.sortedBy { it?.start }
-        val roomEnds = mutableListOf<Int>()
+        val starts = intervals.mapNotNull { it?.start }.sorted()
+        val ends = intervals.mapNotNull { it?.end }.sorted()
+
+        var i = 0
+        var j = 0
+        var curr = 0
         var result = 0
-        for (i in sorted.indices) {
-            val start = sorted[i]?.start ?: continue
-            val end = sorted[i]?.end ?: continue
-            val busyRoom = roomEnds.count { it > start }
-            if (result < busyRoom + 1) {
-                result = busyRoom + 1
+        while (i < intervals.size) {
+            if (starts[i] < ends[j]) {
+                ++i
+                ++curr
+            } else {
+                ++j
+                --curr
             }
-            roomEnds.add(end)
+            if (result < curr) {
+                result = curr
+            }
         }
 
         return result

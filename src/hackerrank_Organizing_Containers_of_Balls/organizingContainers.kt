@@ -1,5 +1,7 @@
 package hackerrank_Organizing_Containers_of_Balls
 
+import kotlin.test.assertEquals
+
 /*
  * Complete the 'organizingContainers' function below.
  *
@@ -38,12 +40,12 @@ fun organizingContainers(container: Array<Array<Int>>): String {
 
 fun main() {
     arrayOf(
-            arrayOf(arrayOf(1,4), arrayOf(2,3)),
-            arrayOf(arrayOf(1,1), arrayOf(1,1)),
-            arrayOf(arrayOf(1,1), arrayOf(0,1)),
-            arrayOf(arrayOf(1,3,1), arrayOf(2,1,2), arrayOf(3,3,3)),
-            arrayOf(arrayOf(0,2,1), arrayOf(1,1,1)  , arrayOf(2,0,0)),
-    ).forEach { container ->
-        organizingContainers(container).let(::println)
+            arrayOf(arrayOf(1,4), arrayOf(2,3)) to "Impossible",
+            arrayOf(arrayOf(1,1), arrayOf(1,1)) to "Possible",
+            arrayOf(arrayOf(0,2), arrayOf(1,1)) to "Impossible",
+            arrayOf(arrayOf(1,3,1), arrayOf(2,1,2), arrayOf(3,3,3)) to "Impossible",
+            arrayOf(arrayOf(0,2,1), arrayOf(1,1,1)  , arrayOf(2,0,0)) to "Possible",
+    ).forEach { (container, output) ->
+        assertEquals(output, organizingContainers(container))
     }
 }

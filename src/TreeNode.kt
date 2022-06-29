@@ -1,10 +1,22 @@
-import com.sun.source.tree.Tree
-import java.util.Queue
-import java.util.concurrent.ArrayBlockingQueue
-
 class TreeNode(var `val`: Int) {
     var left: TreeNode? = null
     var right: TreeNode? = null
+
+    override fun equals(other: Any?): Boolean {
+        if (other !is TreeNode) {
+            return false
+        }
+        return compareTree(other)
+    }
+
+    private fun compareTree(other: TreeNode?): Boolean {
+        if (`val` != other?.`val`) {
+            return false
+        }
+        val isLeftEqual = left?.compareTree(other.left) ?: (other.left == null)
+        val isRightEqual = right?.compareTree(other.right) ?: (other.right == null)
+        return isLeftEqual == isRightEqual
+    }
 
     companion object {
         fun create(vararg values: Int?): TreeNode? {

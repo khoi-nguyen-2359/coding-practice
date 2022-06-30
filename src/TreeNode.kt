@@ -15,7 +15,7 @@ class TreeNode(var `val`: Int) {
         }
         val isLeftEqual = left?.compareTree(other.left) ?: (other.left == null)
         val isRightEqual = right?.compareTree(other.right) ?: (other.right == null)
-        return isLeftEqual == isRightEqual
+        return isLeftEqual && isRightEqual
     }
 
     companion object {

@@ -24,7 +24,7 @@ class Solution {
         }
         val leftHeight = height(node.left)
         val rightHeight = height(node.right)
-        return if (Math.abs(leftHeight - rightHeight) <= 1) {
+        return if (leftHeight != -1 && rightHeight != -1 && Math.abs(leftHeight - rightHeight) <= 1) {
             Math.max(leftHeight, rightHeight) + 1
         } else {
             -1
@@ -38,6 +38,7 @@ fun main() {
             TreeNode.create(1,2,2,3,3,null,null,4,4) to false,
             TreeNode.create() to true,
             TreeNode.create(1,2,3,4,5,null,6,7,null,null,null,null,null,8) to false,
+            TreeNode.create(1,2,2,3,null,null,3,4,null,null,null,null,null,4) to false,
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().isBalanced(input))
     }

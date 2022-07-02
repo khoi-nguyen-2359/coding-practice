@@ -71,12 +71,13 @@ class SolutionDSU {
         private val rank = IntArray(n) { 0 }
 
         fun find(a: Int): Int {
-            if (parent[a] == a) {
-                return a
+            var curr = a
+            while (parent[curr] != curr) {
+                parent[curr] = parent[parent[curr]]
+                curr = parent[curr]
             }
-            val p = find(parent[a])
-            parent[a] = p
-            return p
+            parent[a] = curr
+            return curr
         }
 
         fun union(a: Int, b: Int): Boolean {

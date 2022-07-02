@@ -14,16 +14,21 @@ import kotlin.test.assertEquals
 
 class Solution {
     fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
-        val parentVal = root?.`val` ?: return null
         val pVal = p?.`val` ?: return null
         val qVal = q?.`val` ?: return null
-        return if (pVal < parentVal && qVal < parentVal) {
-            lowestCommonAncestor(root.left, p, q)
-        } else if (pVal > parentVal && qVal > parentVal) {
-            lowestCommonAncestor(root.right, p, q)
-        } else {
-            root
+        var curr = root
+        while (true) {
+            val parentVal = curr?.`val` ?: return null
+            if (pVal < parentVal && qVal < parentVal) {
+                curr = curr.left
+            } else if (pVal > parentVal && qVal > parentVal) {
+                curr = curr.right
+            } else {
+                return curr
+            }
         }
+
+        return null
     }
 }
 

@@ -1,3 +1,5 @@
+import java.util.Stack
+
 class TreeNode(var `val`: Int) {
     var left: TreeNode? = null
     var right: TreeNode? = null
@@ -7,6 +9,31 @@ class TreeNode(var `val`: Int) {
             return false
         }
         return compareTree(other)
+    }
+
+    fun printAllPaths() {
+        val stack = Stack<Pair<TreeNode, Int>>()
+        stack.add(this to 2)
+        while (stack.isNotEmpty()) {
+            val (node, state) = stack.pop()
+            if (state == 0) {
+                if (node.left == null && node.right == null) {
+                    stack.forEach { print("${it.first.`val`}-") }
+                    println("${node.`val`}")
+                }
+            } else {
+                val nextChild = if (state == 2) {
+                    node.left
+                } else if (state == 1) {
+                    node.right
+                } else null
+
+                stack.push(node to state - 1)
+                if (nextChild != null) {
+                    stack.push(nextChild to 2)
+                }
+            }
+        }
     }
 
     private fun compareTree(other: TreeNode?): Boolean {
@@ -30,18 +57,18 @@ class TreeNode(var `val`: Int) {
                 if (nodeArray[i] == null && nodeValue != null) {
                     nodeArray[i] = TreeNode(nodeValue)
                 }
-                val leftValue = values.getOrNull(2*i + 1)
-                val rightValue = values.getOrNull(2*i + 2)
+                val leftValue = values.getOrNull(2 * i + 1)
+                val rightValue = values.getOrNull(2 * i + 2)
                 var leftNode: TreeNode? = null
                 if (leftValue != null) {
                     leftNode = TreeNode(leftValue)
-                    nodeArray[2*i+1] = leftNode
+                    nodeArray[2 * i + 1] = leftNode
                 }
 
                 var rightNode: TreeNode? = null
                 if (rightValue != null) {
                     rightNode = TreeNode(rightValue)
-                    nodeArray[2*i+2] = rightNode
+                    nodeArray[2 * i + 2] = rightNode
                 }
                 nodeArray[i]?.left = leftNode
                 nodeArray[i]?.right = rightNode

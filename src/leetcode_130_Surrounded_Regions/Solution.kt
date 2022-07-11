@@ -35,7 +35,9 @@ class Solution {
         }
 
         /*
-        2. restore all '*' and turn all 'O' to 'X'
+        2.
+        - restore all '*' -> 'O'
+        - turn all 'O' to 'X'
          */
         for (i in 0 until n) {
             for (j in 0 until m) {

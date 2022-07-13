@@ -1,16 +1,29 @@
 package leetcode_271_Encode_and_Decode_Strings
 
+import kotlin.test.assertEquals
+
 class Codec {
     // Encodes a list of strings to a single string.
     fun encode(strs: List<String>): String = buildString {
         strs.forEach { s ->
-            val len = s.length
-            repeat(4) { time ->
-                val c = len shr (time * 8) and 0xff
-                append('0' + c)
-            }
+            append(intToStr(s.length))
             append(s)
         }
+    }
+
+    private fun intToStr(n: Int): String = buildString {
+        repeat(4) { i ->
+            val char = (n shr (i * 8) and 0xff).toChar()
+            append(char)
+        }
+    }
+
+    private fun strToInt(s: String, start: Int): Int {
+        var num = 0
+        repeat(4) { i ->
+            num = (num shl 8) or s[start + 3 - i].toInt()
+        }
+        return num
     }
     
     // Decodes a single string to a list of strings.
@@ -18,10 +31,7 @@ class Codec {
         val result = mutableListOf<String>()
         var i = 0
         while (i < s.length) {
-            var len = 0
-            repeat(4) { time ->
-                len = (len shl 8) or (s[i + 3 - time] - '0')
-            }
+            val len = strToInt(s, i)
             result.add(s.substring(i + 4, i + 4 + len))
             i += len + 4
         }
@@ -42,11 +52,8 @@ fun main() {
             listOf("abc", "def", ""),
             listOf("", "", ""),
             listOf()
-    ).forEach {
+    ).forEach { input ->
         val codec = Codec()
-        val enc = codec.encode(it)
-        val dec = codec.decode(enc)
-        dec.forEach { println(it) }
-        println("---")
+        assertEquals(input, codec.decode(codec.encode(input)))
     }
 }

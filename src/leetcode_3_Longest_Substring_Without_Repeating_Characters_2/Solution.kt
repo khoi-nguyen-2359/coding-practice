@@ -1,31 +1,34 @@
 package leetcode_3_Longest_Substring_Without_Repeating_Characters_2
 
+import kotlin.test.assertEquals
+
 class Solution {
     fun lengthOfLongestSubstring(s: String): Int {
         var result = 0
-        val checkMap = mutableMapOf<Char, Int>()
-        var subStart = 0
-        for (i in s.indices) {
-            val lastPos = checkMap[s[i]]
-            if ((lastPos != null && lastPos >= subStart) || i == s.length - 1) {
-                // duplicated!
-                var subLen = i - subStart
-                if (lastPos == null || lastPos < subStart) {
-                    subLen++
-                }
-                if (subLen > result) {
-                    result = subLen
-                }
-                subStart = (lastPos ?: -1) + 1
+        val existed = mutableMapOf<Char?, Int>()
+        var start = 0
+        for (i in 0 .. s.length) {
+            val char = s.getOrNull(i)
+            val lastPos = existed[char]
+            if ((lastPos != null && lastPos >= start) || i == s.length) {
+                result = Math.max(result, i - start)
+                start = (lastPos ?: 0) + 1
             }
-            checkMap[s[i]] = i
+            existed[char] = i
         }
         return result
     }
 }
 
 fun main() {
-    Solution().lengthOfLongestSubstring("bab").let(::println)
+    arrayOf(
+            "abcabcbb" to 3,
+            "bbbbb" to 1,
+            "pwwkew" to 3,
+            "abba" to 2,
+    ).forEach { (inp, exp) ->
+        assertEquals(exp, Solution().lengthOfLongestSubstring(inp))
+    }
 }
 
 /*

@@ -67,22 +67,15 @@ class SolutionIterative {
         if (root == null) {
             return
         }
-        internalFlatten(root)
-    }
 
-    private fun internalFlatten(node: TreeNode): Pair<TreeNode, TreeNode> {
-        val flatLeft = node.left?.let(::internalFlatten)
-        val flatRight = node.right?.let(::internalFlatten)
+        var curr = root
+        while (curr != null) {
+            // If the node has a left child
+                // find the rightmost node of left branch
+                // place the right branch after that rightmost
+                // place the left branch to right
 
-        if (flatLeft != null) {
-            node.left = null
-            val tmp = node.right
-            node.right = flatLeft.first
-            flatLeft.second.right = tmp
+            // move on to the right side of the tree
         }
-
-        val tail: TreeNode? = flatRight?.second ?: flatLeft?.second
-
-        return node to (tail ?: node)
     }
 }

@@ -36,6 +36,17 @@ class Solution {
     }
 }
 
+class SolutionNoExtraSpace {
+    fun findAndReplacePattern(words: Array<String>, pattern: String): List<String> {
+        // encode pattern to 1,2,3 ... marker for chars. Ex: abc -> 123, abb -> 122
+        // loop through each word
+            // encode the word
+            // compare encoded word vs. encoded pattern
+        // end loop
+        return emptyList()
+    }
+}
+
 fun main() {
     arrayOf(
             arrayOf("abc", "deq", "mee", "aqq", "dkd", "ccc") to "abb" to listOf("mee", "aqq"),

@@ -12,6 +12,17 @@ class ListNode(var `val`: Int) {
         }
     }
 
+    fun isEqual(other: ListNode?): Boolean {
+        var c1: ListNode? = this
+        var c2: ListNode? = other
+        while (c1 != null && c2 != null && c1.`val` == c2.`val`) {
+            c1 = c1.next
+            c2 = c2.next
+        }
+
+        return c1 == null && c2 == null
+    }
+
     companion object {
         fun create(vararg values: Int): ListNode? {
             if (values.isEmpty()) {

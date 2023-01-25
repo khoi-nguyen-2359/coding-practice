@@ -10,7 +10,7 @@ package hackerrank_Day_of_the_Programmer
 /*
 256th day in normal year: 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 13
 256th day in leap year: 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 12
-256th day in 1918: 31 + 14 + 31 + 30 + 31 + 30 + 31 + 31 + 26
+256th day in 1918: 31 + 15 + 31 + 30 + 31 + 30 + 31 + 31 + 26
  */
 
 fun dayOfProgrammer(year: Int): String = when {

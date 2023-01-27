@@ -30,7 +30,4 @@ class Solution {
 }
 
 fun main() {
-    arrayOf(
-        arrayOf("eat","tea","tan","ate","nat","bat") to
-    )
 }

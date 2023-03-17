@@ -1,6 +1,7 @@
 package leetcode_106_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal
 
 import TreeNode
+import java.util.Stack
 import kotlin.test.assertEquals
 
 /**
@@ -15,7 +16,35 @@ import kotlin.test.assertEquals
  */
 class Solution {
     fun buildTree(inorder: IntArray, postorder: IntArray): TreeNode? {
-        return recursivelyCheck(inorder, postorder)
+        return iterativelyCheck(inorder, postorder)
+    }
+
+    private fun iterativelyCheck(inorder: IntArray, postorder: IntArray): TreeNode? {
+        val stack = Stack<Triple<TreeNode, IntArray, IntArray>>()
+        val rootNode = postorder.lastOrNull()?.let(::TreeNode) ?: return null
+        stack.add(Triple(rootNode, inorder, postorder))
+        while (stack.isNotEmpty()) {
+            val (parent, inord, postord) = stack.pop()
+            val parentInorderIndex = inord.indexOf(parent.`val`)
+
+            val leftInOrd = inord.sliceArray( 0 until parentInorderIndex)
+            val leftPostOrd = postord.sliceArray(0 until parentInorderIndex)
+            val leftNode = leftPostOrd.lastOrNull()?.let(::TreeNode)
+            parent.left = leftNode
+
+            val rightInOrd = inord.sliceArray( parentInorderIndex + 1 until inord.size)
+            val rightPostOrd = postord.sliceArray(parentInorderIndex until postord.size - 1)
+            val rightNode = rightPostOrd.lastOrNull()?.let(::TreeNode)
+            parent.right = rightNode
+
+            if (leftNode != null) {
+                stack.push(Triple(leftNode, leftInOrd, leftPostOrd))
+            }
+            if (rightNode != null) {
+                stack.push(Triple(rightNode, rightInOrd, rightPostOrd))
+            }
+        }
+        return rootNode
     }
 
     private fun recursivelyCheck(inorder: IntArray, postorder: IntArray): TreeNode? {

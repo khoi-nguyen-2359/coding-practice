@@ -1,6 +1,6 @@
 package leetcode_1448_Count_Good_Nodes_in_Binary_Tree
 
-import TreeNode
+import LcTreeNode
 import java.util.Stack
 import kotlin.test.assertEquals
 
@@ -15,10 +15,10 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun goodNodes(root: TreeNode?): Int {
+    fun goodNodes(root: LcTreeNode?): Int {
         root ?: return 0
         var result = 0
-        val stack = Stack<Pair<TreeNode, Int>>()
+        val stack = Stack<Pair<LcTreeNode, Int>>()
         stack.push(root to root.`val`)
         while (stack.isNotEmpty()) {
             val (node, currMax) = stack.pop()
@@ -38,9 +38,9 @@ class Solution {
 
 fun main() {
     arrayOf(
-            TreeNode.create(3, 1, 4, 3, null, 1, 5) to 4,
-            TreeNode.create(3,3,null,4,2) to 3,
-            TreeNode.create(1) to 1,
+            LcTreeNode.create(3, 1, 4, 3, null, 1, 5) to 4,
+            LcTreeNode.create(3,3,null,4,2) to 3,
+            LcTreeNode.create(1) to 1,
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().goodNodes(input))
     }

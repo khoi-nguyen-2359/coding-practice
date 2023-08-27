@@ -1,6 +1,6 @@
 package leetcode_226_Invert_Binary_Tree
 
-import TreeNode
+import LcTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -14,7 +14,7 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun invertTree(root: TreeNode?): TreeNode? {
+    fun invertTree(root: LcTreeNode?): LcTreeNode? {
         if (root?.left != null) {
             invertTree(root.left)
         }
@@ -30,9 +30,9 @@ class Solution {
 
 fun main() {
     arrayOf(
-            TreeNode.create(4,2,7,1,3,6,9) to TreeNode.create(4,7,2,9,6,3,1),
-            TreeNode.create(2,1,3) to TreeNode.create(2,3,1),
-            TreeNode.create() to TreeNode.create(),
+            LcTreeNode.create(4,2,7,1,3,6,9) to LcTreeNode.create(4,7,2,9,6,3,1),
+            LcTreeNode.create(2,1,3) to LcTreeNode.create(2,3,1),
+            LcTreeNode.create() to LcTreeNode.create(),
     ).forEach { (input, output) ->
         assertEquals(output, Solution().invertTree(input))
     }

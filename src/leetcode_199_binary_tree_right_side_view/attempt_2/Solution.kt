@@ -1,6 +1,6 @@
 package leetcode_199_binary_tree_right_side_view.attempt_2
 
-import TreeNode
+import LcTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -14,13 +14,13 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun rightSideView(root: TreeNode?): List<Int> {
+    fun rightSideView(root: LcTreeNode?): List<Int> {
         val ans = mutableListOf<Int>()
         root ?: return ans
-        val queue = ArrayDeque<Pair<TreeNode, Int>>()
+        val queue = ArrayDeque<Pair<LcTreeNode, Int>>()
         queue.addLast(root to 0)
         var currLevel = 0
-        var lastNode: TreeNode = root
+        var lastNode: LcTreeNode = root
         while (queue.isNotEmpty()) {
             val (node, level) = queue.removeFirst()
             if (level > currLevel) {
@@ -45,13 +45,13 @@ class Solution {
 
 fun main() {
     arrayOf(
-            TreeNode.create(3, 9, 20, null, null, 15, 7) to listOf(3, 20, 7),
-            TreeNode.create(1, 2, 3, null, 5, null, 4) to listOf(1, 3, 4),
-            TreeNode.create(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5) to listOf(6, 8, 9, 5),
-            TreeNode.create(2, 1) to listOf(2, 1),
-            TreeNode.create(2, 1, null, null, 3) to listOf(2, 1, 3),
-            TreeNode.create(1) to listOf(1),
-            TreeNode.create() to listOf(),
+            LcTreeNode.create(3, 9, 20, null, null, 15, 7) to listOf(3, 20, 7),
+            LcTreeNode.create(1, 2, 3, null, 5, null, 4) to listOf(1, 3, 4),
+            LcTreeNode.create(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5) to listOf(6, 8, 9, 5),
+            LcTreeNode.create(2, 1) to listOf(2, 1),
+            LcTreeNode.create(2, 1, null, null, 3) to listOf(2, 1, 3),
+            LcTreeNode.create(1) to listOf(1),
+            LcTreeNode.create() to listOf(),
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().rightSideView(input))
     }

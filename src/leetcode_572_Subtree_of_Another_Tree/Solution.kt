@@ -1,6 +1,6 @@
 package leetcode_572_Subtree_of_Another_Tree
 
-import TreeNode
+import LcTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -14,7 +14,7 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun isSubtree(root: TreeNode?, subRoot: TreeNode?): Boolean {
+    fun isSubtree(root: LcTreeNode?, subRoot: LcTreeNode?): Boolean {
         if (compareTree(root, subRoot)) {
             return true
         }
@@ -24,7 +24,7 @@ class Solution {
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
     }
 
-    private fun compareTree(t1: TreeNode?, t2: TreeNode?): Boolean {
+    private fun compareTree(t1: LcTreeNode?, t2: LcTreeNode?): Boolean {
         if (t1 == null && t2 == null) {
             return true
         }
@@ -39,8 +39,8 @@ class Solution {
 
 fun main() {
     arrayOf(
-            TreeNode.create(3,4,5,1,2) to TreeNode.create(4,1,2) to true,
-            TreeNode.create(3,4,5,1,2,null,null,null,null,0) to TreeNode.create(4,1,2) to false,
+            LcTreeNode.create(3,4,5,1,2) to LcTreeNode.create(4,1,2) to true,
+            LcTreeNode.create(3,4,5,1,2,null,null,null,null,0) to LcTreeNode.create(4,1,2) to false,
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().isSubtree(input.first, input.second))
     }

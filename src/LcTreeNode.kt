@@ -1,22 +1,26 @@
+import java.util.LinkedList
 import java.util.Stack
 
-class TreeNode(var `val`: Int) {
-    var left: TreeNode? = null
-    var right: TreeNode? = null
+/**
+ * Common class for TreeNode in leetcode problems.
+ */
+class LcTreeNode(var `val`: Int) {
+    var left: LcTreeNode? = null
+    var right: LcTreeNode? = null
 
     override fun toString(): String {
         return "$`val`"
     }
 
     override fun equals(other: Any?): Boolean {
-        if (other !is TreeNode) {
+        if (other !is LcTreeNode) {
             return false
         }
         return compareTree(other)
     }
 
     fun printAllPaths() {
-        val stack = Stack<Pair<TreeNode, Int>>()
+        val stack = Stack<Pair<LcTreeNode, Int>>()
         stack.add(this to 2)
         while (stack.isNotEmpty()) {
             val (node, state) = stack.pop()
@@ -40,7 +44,7 @@ class TreeNode(var `val`: Int) {
         }
     }
 
-    private fun compareTree(other: TreeNode?): Boolean {
+    private fun compareTree(other: LcTreeNode?): Boolean {
         if (`val` != other?.`val`) {
             return false
         }
@@ -50,28 +54,27 @@ class TreeNode(var `val`: Int) {
     }
 
     companion object {
-        fun create(vararg values: Int?): TreeNode? {
+        fun create(vararg values: Int?): LcTreeNode? {
             if (values.isEmpty()) {
                 return null
             }
-
-            val nodeArray = Array<TreeNode?>(values.size) { null }
+            val nodeArray = Array<LcTreeNode?>(values.size) { null }
             for (i in values.indices) {
                 val nodeValue = values[i]
                 if (nodeArray[i] == null && nodeValue != null) {
-                    nodeArray[i] = TreeNode(nodeValue)
+                    nodeArray[i] = LcTreeNode(nodeValue)
                 }
                 val leftValue = values.getOrNull(2 * i + 1)
                 val rightValue = values.getOrNull(2 * i + 2)
-                var leftNode: TreeNode? = null
+                var leftNode: LcTreeNode? = null
                 if (leftValue != null) {
-                    leftNode = TreeNode(leftValue)
+                    leftNode = LcTreeNode(leftValue)
                     nodeArray[2 * i + 1] = leftNode
                 }
 
-                var rightNode: TreeNode? = null
+                var rightNode: LcTreeNode? = null
                 if (rightValue != null) {
-                    rightNode = TreeNode(rightValue)
+                    rightNode = LcTreeNode(rightValue)
                     nodeArray[2 * i + 2] = rightNode
                 }
                 nodeArray[i]?.left = leftNode

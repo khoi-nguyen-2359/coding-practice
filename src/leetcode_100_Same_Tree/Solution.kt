@@ -1,6 +1,6 @@
 package leetcode_100_Same_Tree
 
-import TreeNode
+import LcTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -14,7 +14,7 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun isSameTree(p: TreeNode?, q: TreeNode?): Boolean {
+    fun isSameTree(p: LcTreeNode?, q: LcTreeNode?): Boolean {
         if (p == null && q == null) {
             return true
         }
@@ -29,9 +29,9 @@ class Solution {
 
 fun main() {
     arrayOf(
-            TreeNode.create(1, 2, 3) to TreeNode.create(1, 2, 3) to true,
-            TreeNode.create(1, 2) to TreeNode.create(1, null, 2) to false,
-            TreeNode.create(1, 2, 1) to TreeNode.create(1, 1, 2) to false,
+            LcTreeNode.create(1, 2, 3) to LcTreeNode.create(1, 2, 3) to true,
+            LcTreeNode.create(1, 2) to LcTreeNode.create(1, null, 2) to false,
+            LcTreeNode.create(1, 2, 1) to LcTreeNode.create(1, 1, 2) to false,
     ).forEachIndexed { index, (input, exp) ->
         val (p, q) = input
         assertEquals(exp, Solution().isSameTree(p, q), "$index")

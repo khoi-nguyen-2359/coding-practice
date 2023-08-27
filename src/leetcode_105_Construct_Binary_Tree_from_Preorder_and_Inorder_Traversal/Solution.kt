@@ -1,6 +1,6 @@
 package leetcode_105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal
 
-import TreeNode
+import LcTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -14,7 +14,7 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun buildTree(preorder: IntArray, inorder: IntArray): TreeNode? {
+    fun buildTree(preorder: IntArray, inorder: IntArray): LcTreeNode? {
         return buildTreeRecursive(
                 preorder, 0, preorder.size - 1,
                 inorder, 0, inorder.size - 1
@@ -24,9 +24,9 @@ class Solution {
     private fun buildTreeRecursive(
             preorder: IntArray, preFrom: Int, preTo: Int,
             inorder: IntArray, inFrom: Int, inTo: Int
-    ): TreeNode {
+    ): LcTreeNode {
         val rootVal = preorder[preFrom]
-        val root = TreeNode(rootVal)
+        val root = LcTreeNode(rootVal)
 
         val rootIndex = search(inFrom, inTo, inorder, rootVal) - inFrom
 //        val leftSize = Math.max(rootIndex, 0)
@@ -66,9 +66,9 @@ class Solution {
 
 fun main() {
     arrayOf(
-            intArrayOf(3, 9, 20, 15, 7) to intArrayOf(9, 3, 15, 20, 7) to TreeNode.create(3, 9, 20, null, null, 15, 7),
-            intArrayOf(-1) to intArrayOf(-1) to TreeNode.create(-1),
-            intArrayOf(4, 1, 2, 3) to intArrayOf(1, 2, 3, 4) to TreeNode.create(4, 1, null, null, 2, null, null, null, null, null, 3)
+            intArrayOf(3, 9, 20, 15, 7) to intArrayOf(9, 3, 15, 20, 7) to LcTreeNode.create(3, 9, 20, null, null, 15, 7),
+            intArrayOf(-1) to intArrayOf(-1) to LcTreeNode.create(-1),
+            intArrayOf(4, 1, 2, 3) to intArrayOf(1, 2, 3, 4) to LcTreeNode.create(4, 1, null, null, 2, null, null, null, null, null, 3)
     ).forEach { (input, exp) ->
         val output = Solution().buildTree(input.first, input.second)
         assertEquals(exp, output)

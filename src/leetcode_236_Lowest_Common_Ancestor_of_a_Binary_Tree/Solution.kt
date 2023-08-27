@@ -1,8 +1,6 @@
 package leetcode_236_Lowest_Common_Ancestor_of_a_Binary_Tree
 
-import TreeNode
-import com.sun.source.tree.Tree
-import leetcode_235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree.Solution
+import LcTreeNode
 import java.util.Stack
 import kotlin.test.assertEquals
 
@@ -15,9 +13,9 @@ import kotlin.test.assertEquals
  */
 
 class Solution {
-    fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
+    fun lowestCommonAncestor(root: LcTreeNode?, p: LcTreeNode?, q: LcTreeNode?): LcTreeNode? {
         // build the parent map
-        val parent = mutableMapOf<Int, TreeNode?>()
+        val parent = mutableMapOf<Int, LcTreeNode?>()
         buildParentMap(root, parent)
 
         // build the ancestor set of p from parent map
@@ -40,7 +38,7 @@ class Solution {
         return null
     }
 
-    private fun buildParentMap(node: TreeNode?, parentMap: MutableMap<Int, TreeNode?>) {
+    private fun buildParentMap(node: LcTreeNode?, parentMap: MutableMap<Int, LcTreeNode?>) {
         val leftVal = node?.left?.`val`
         if (leftVal != null) {
             parentMap[leftVal] = node
@@ -55,10 +53,10 @@ class Solution {
 }
 
 class Solution2 {
-    fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
-        val stack = Stack<Pair<TreeNode?, Int>>()
+    fun lowestCommonAncestor(root: LcTreeNode?, p: LcTreeNode?, q: LcTreeNode?): LcTreeNode? {
+        val stack = Stack<Pair<LcTreeNode?, Int>>()
         stack.push(root to 2)
-        var lca: TreeNode? = null
+        var lca: LcTreeNode? = null
         var oneNodeFound = false
         while (stack.isNotEmpty()) {
             val (parent, state) = stack.pop()
@@ -97,10 +95,10 @@ fun main() {
 //            Triple(TreeNode.create(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5), 2, 4) to 2,
 //            Triple(TreeNode.create(2, 1), 2, 1) to 2,
 //            Triple(TreeNode.create(2, 1), 1, 2) to 2,
-            Triple(TreeNode.create(9,-1,-4,10,3,null,null,null,5), 3, 5) to -1
+            Triple(LcTreeNode.create(9,-1,-4,10,3,null,null,null,5), 3, 5) to -1
     ).forEach { (input, exp) ->
         val (root, p, q) = input
 //        assertEquals(exp, Solution().lowestCommonAncestor(root, TreeNode(p), TreeNode(q))?.`val`)
-        assertEquals(exp, Solution2().lowestCommonAncestor(root, TreeNode(p), TreeNode(q))?.`val`)
+        assertEquals(exp, Solution2().lowestCommonAncestor(root, LcTreeNode(p), LcTreeNode(q))?.`val`)
     }
 }

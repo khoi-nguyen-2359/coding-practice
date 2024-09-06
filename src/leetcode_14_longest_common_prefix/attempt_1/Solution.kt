@@ -1,4 +1,4 @@
-package leetcode_14_longest_common_prefix
+package leetcode_14_longest_common_prefix.attempt_1
 
 class Solution {
     fun longestCommonPrefix(strs: Array<String>): String {

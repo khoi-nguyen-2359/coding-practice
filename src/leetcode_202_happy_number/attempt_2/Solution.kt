@@ -1,4 +1,4 @@
-package leetcode_202_happy_number_2
+package leetcode_202_happy_number.attempt_2
 
 /**
  * Implement a loop in which each step is to sum all squares of the digits.

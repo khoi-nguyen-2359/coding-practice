@@ -1,4 +1,4 @@
-package leetcode_973_k_closest_points_to_origin_2
+package leetcode_973_k_closest_points_to_origin.attempt_2
 
 import java.util.PriorityQueue
 

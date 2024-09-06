@@ -1,4 +1,4 @@
-package leetcode_202_happy_number
+package leetcode_202_happy_number.attempt_1
 
 class Solution {
     private fun happilySum(num: Int): Int {

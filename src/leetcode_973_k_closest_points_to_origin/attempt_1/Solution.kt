@@ -1,4 +1,4 @@
-package leetcode_973_k_closest_points_to_origin
+package leetcode_973_k_closest_points_to_origin.attempt_1
 
 class Solution {
     fun kClosest(points: Array<IntArray>, K: Int): Array<IntArray> {

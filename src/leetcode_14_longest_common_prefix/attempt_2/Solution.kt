@@ -1,4 +1,4 @@
-package leetcode_14_longest_common_prefix_2
+package leetcode_14_longest_common_prefix.attempt_2
 
 // n * min_len
 class Solution {

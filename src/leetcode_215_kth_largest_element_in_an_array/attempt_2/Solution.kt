@@ -1,4 +1,4 @@
-package leetcode_215_kth_largest_element_in_an_array_2
+package leetcode_215_kth_largest_element_in_an_array.attempt_2
 
 import java.util.PriorityQueue
 

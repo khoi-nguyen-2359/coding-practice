@@ -1,6 +1,6 @@
 package leetcode_876_Middle_of_the_Linked_List
 
-import ListNode
+import LcLinkedListNode
 
 /**
  * Example:
@@ -12,7 +12,7 @@ import ListNode
  * }
  */
 class Solution {
-    fun middleNode(head: ListNode?): ListNode? {
+    fun middleNode(head: LcLinkedListNode?): LcLinkedListNode? {
         var slow = head
         var fast = head
         while (fast?.next != null) {
@@ -26,10 +26,10 @@ class Solution {
 
 fun main() {
     arrayOf(
-            ListNode.create(1,2,3,4,5),
-            ListNode.create(1,2,3,4,5,6),
-            ListNode.create(1,2),
-            ListNode.create(1),
+            LcLinkedListNode.create(1,2,3,4,5),
+            LcLinkedListNode.create(1,2,3,4,5,6),
+            LcLinkedListNode.create(1,2),
+            LcLinkedListNode.create(1),
             null
     ).forEach {
         Solution().middleNode(it)?.`val`?.let(::println)

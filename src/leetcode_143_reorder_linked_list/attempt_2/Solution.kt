@@ -1,9 +1,9 @@
 package leetcode_143_reorder_linked_list.attempt_2;
 
-import ListNode
+import LcLinkedListNode
 
 class Solution {
-    fun reorderList(head: ListNode?) {
+    fun reorderList(head: LcLinkedListNode?) {
         // find tail
         var fast = head
         var slow = head
@@ -13,7 +13,7 @@ class Solution {
         }
 
         // reverse second half
-        var prev: ListNode? = null
+        var prev: LcLinkedListNode? = null
         var curr = slow
         while (curr != null) {
             val tmp = curr.next
@@ -24,7 +24,7 @@ class Solution {
 //        prev?.print()
 
         // reorder
-        var next: ListNode? = ListNode(-1)
+        var next: LcLinkedListNode? = LcLinkedListNode(-1)
         var (left, right) = head to prev
         while (next != null) {
             next.next = left
@@ -40,7 +40,7 @@ class Solution {
 }
 
 fun main() {
-    val head = ListNode.create(1,2,3,4)
+    val head = LcLinkedListNode.create(1,2,3,4)
     Solution().reorderList(head)
 //    head?.print()
 }

@@ -1,6 +1,6 @@
 package leetcode_23_Merge_k_Sorted_Lists.attempt_1
 
-import ListNode
+import LcLinkedListNode
 import java.util.PriorityQueue
 
 /**
@@ -13,7 +13,7 @@ import java.util.PriorityQueue
  * }
  */
 class Solution {
-    fun mergeKLists(lists: Array<ListNode?>): ListNode? {
+    fun mergeKLists(lists: Array<LcLinkedListNode?>): LcLinkedListNode? {
         val queue = PriorityQueue<Int>()
         for (i in lists.indices) {
             var c = lists[i]
@@ -23,11 +23,11 @@ class Solution {
             }
         }
 
-        val result = ListNode(-1)
-        var c: ListNode? = result
+        val result = LcLinkedListNode(-1)
+        var c: LcLinkedListNode? = result
         while (queue.isNotEmpty()) {
             val value = queue.poll()
-            c?.next = ListNode(value)
+            c?.next = LcLinkedListNode(value)
             c = c?.next
         }
         return result.next
@@ -37,12 +37,12 @@ class Solution {
 fun main() {
     arrayOf(
             arrayOf(
-                    ListNode.create(1, 3, 4),
-                    ListNode.create(1, 4, 5),
-                    ListNode.create(5, 6),
+                    LcLinkedListNode.create(1, 3, 4),
+                    LcLinkedListNode.create(1, 4, 5),
+                    LcLinkedListNode.create(5, 6),
             ),
             arrayOf(),
-            arrayOf(ListNode.create())
+            arrayOf(LcLinkedListNode.create())
     ).forEach {
         println()
         Solution().mergeKLists(it)?.print()

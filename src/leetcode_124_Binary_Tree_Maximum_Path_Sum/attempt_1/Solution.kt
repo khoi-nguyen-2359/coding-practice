@@ -1,6 +1,6 @@
 package leetcode_124_Binary_Tree_Maximum_Path_Sum.attempt_1
 
-import LcTreeNode
+import LcBinTreeNode
 
 /**
  * Example:
@@ -14,7 +14,7 @@ import LcTreeNode
  */
 class Solution {
     private var result = Int.MIN_VALUE
-    fun maxPathSum(root: LcTreeNode?): Int {
+    fun maxPathSum(root: LcBinTreeNode?): Int {
         if (root == null) {
             return 0
         }
@@ -23,7 +23,7 @@ class Solution {
         return result
     }
 
-    private fun max_gain(node: LcTreeNode?): Int {
+    private fun max_gain(node: LcBinTreeNode?): Int {
         if (node == null) {
             return 0
         }
@@ -40,9 +40,9 @@ class Solution {
 
 fun main() {
     arrayOf(
-            LcTreeNode.create(1,2,3),
-            LcTreeNode.create(-10,9,20,null,null,15,7),
-            LcTreeNode.create(2,-1),
+            LcBinTreeNode.create(1,2,3),
+            LcBinTreeNode.create(-10,9,20,null,null,15,7),
+            LcBinTreeNode.create(2,-1),
     ).forEach {
         Solution().maxPathSum(it).let(::println)
     }

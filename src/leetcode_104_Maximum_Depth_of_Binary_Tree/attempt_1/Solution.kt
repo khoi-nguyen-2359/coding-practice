@@ -1,14 +1,14 @@
 package leetcode_104_Maximum_Depth_of_Binary_Tree.attempt_1
 
-import LcTreeNode
+import LcBinTreeNode
 import java.util.Stack
 
 class Solution {
-    fun maxDepth(root: LcTreeNode?): Int {
+    fun maxDepth(root: LcBinTreeNode?): Int {
         if (root == null) {
             return 0
         }
-        val stack = Stack<Pair<LcTreeNode, Int>>()
+        val stack = Stack<Pair<LcBinTreeNode, Int>>()
         stack.push(root to 1)
         var max = 1
         while (stack.isNotEmpty()) {

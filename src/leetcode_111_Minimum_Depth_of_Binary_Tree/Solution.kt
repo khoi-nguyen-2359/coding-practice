@@ -1,6 +1,6 @@
 package leetcode_111_Minimum_Depth_of_Binary_Tree
 
-import LcTreeNode as TreeNode
+import LcBinTreeNode as TreeNode
 
 /**
  * Example:

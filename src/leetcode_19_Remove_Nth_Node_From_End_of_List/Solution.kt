@@ -1,6 +1,6 @@
 package leetcode_19_Remove_Nth_Node_From_End_of_List
 
-import ListNode
+import LcLinkedListNode
 
 /**
  * Example:
@@ -12,7 +12,7 @@ import ListNode
  * }
  */
 class Solution {
-    fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
+    fun removeNthFromEnd(head: LcLinkedListNode?, n: Int): LcLinkedListNode? {
         var fast = head
         var slow = head
         var prev = head
@@ -37,9 +37,9 @@ class Solution {
 
 fun main() {
     arrayOf(
-            ListNode.create(1, 2) to 2,
-            ListNode.create(1, 2, 3, 4, 5) to 2,
-            ListNode.create(1) to 1,
+            LcLinkedListNode.create(1, 2) to 2,
+            LcLinkedListNode.create(1, 2, 3, 4, 5) to 2,
+            LcLinkedListNode.create(1) to 1,
     ).forEach { (node, nth) ->
         Solution().removeNthFromEnd(node, nth)?.print()
         println()

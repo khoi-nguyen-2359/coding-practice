@@ -1,6 +1,6 @@
 package leetcode_235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree
 
-import LcTreeNode
+import LcBinTreeNode
 import leetcode_236_Lowest_Common_Ancestor_of_a_Binary_Tree.Solution
 import kotlin.test.assertEquals
 
@@ -13,7 +13,7 @@ import kotlin.test.assertEquals
  */
 
 class Solution {
-    fun lowestCommonAncestor(root: LcTreeNode?, p: LcTreeNode?, q: LcTreeNode?): LcTreeNode? {
+    fun lowestCommonAncestor(root: LcBinTreeNode?, p: LcBinTreeNode?, q: LcBinTreeNode?): LcBinTreeNode? {
         val pVal = p?.`val` ?: return null
         val qVal = q?.`val` ?: return null
         var curr = root
@@ -34,14 +34,14 @@ class Solution {
 
 fun main() {
     arrayOf(
-            Triple(LcTreeNode.create(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5), 2, 8) to 6,
-            Triple(LcTreeNode.create(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5), 2, 4) to 2,
-            Triple(LcTreeNode.create(2, 1), 2, 1) to 2,
-            Triple(LcTreeNode.create(2, 1), 1, 2) to 2,
-            Triple(LcTreeNode.create(2, 1), 1, 1) to 1,
-            Triple(LcTreeNode.create(1), 1, 1) to 1,
+            Triple(LcBinTreeNode.create(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5), 2, 8) to 6,
+            Triple(LcBinTreeNode.create(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5), 2, 4) to 2,
+            Triple(LcBinTreeNode.create(2, 1), 2, 1) to 2,
+            Triple(LcBinTreeNode.create(2, 1), 1, 2) to 2,
+            Triple(LcBinTreeNode.create(2, 1), 1, 1) to 1,
+            Triple(LcBinTreeNode.create(1), 1, 1) to 1,
     ).forEach { (input, exp) ->
         val (root, p, q) = input
-        assertEquals(exp, Solution().lowestCommonAncestor(root, LcTreeNode(p), LcTreeNode(q))?.`val`)
+        assertEquals(exp, Solution().lowestCommonAncestor(root, LcBinTreeNode(p), LcBinTreeNode(q))?.`val`)
     }
 }

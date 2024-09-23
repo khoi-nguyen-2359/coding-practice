@@ -1,6 +1,6 @@
 package leetcode_141_Linked_List_Cycle.attempt_2
 
-import ListNode
+import LcLinkedListNode
 
 /**
  * Example:
@@ -19,7 +19,7 @@ import ListNode
 * space complexity: O(1)
  */
 class Solution {
-    fun hasCycle(head: ListNode?): Boolean {
+    fun hasCycle(head: LcLinkedListNode?): Boolean {
         var slow = head?.next
         var fast = head?.next?.next
         while (slow != null && fast != null) {
@@ -43,8 +43,8 @@ class Solution {
 * space complexity: O(n)
  */
 class SolutionBF {
-    fun hasCycle(head: ListNode?): Boolean {
-        val exist = hashSetOf<ListNode>()
+    fun hasCycle(head: LcLinkedListNode?): Boolean {
+        val exist = hashSetOf<LcLinkedListNode>()
         var curr = head
         while (curr != null) {
             if (exist.contains(curr)) {

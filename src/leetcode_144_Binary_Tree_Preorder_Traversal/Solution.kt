@@ -1,7 +1,7 @@
 package leetcode_144_Binary_Tree_Preorder_Traversal
 
 import java.util.*
-import LcTreeNode as TreeNode
+import LcBinTreeNode as TreeNode
 
 /**
  * Example:

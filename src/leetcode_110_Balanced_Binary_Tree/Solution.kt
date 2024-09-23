@@ -1,6 +1,6 @@
 package leetcode_110_Balanced_Binary_Tree
 
-import LcTreeNode
+import LcBinTreeNode
 import kotlin.math.abs
 import kotlin.math.max
 
@@ -15,7 +15,7 @@ import kotlin.math.max
  * }
  */
 
-typealias TreeNode = LcTreeNode
+typealias TreeNode = LcBinTreeNode
 
 class Solution {
     private var isBalanced = true

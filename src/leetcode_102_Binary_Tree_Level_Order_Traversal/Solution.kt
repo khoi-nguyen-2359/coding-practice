@@ -1,6 +1,6 @@
 package leetcode_102_Binary_Tree_Level_Order_Traversal
 
-import LcTreeNode
+import LcBinTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -14,10 +14,10 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun levelOrder(root: LcTreeNode?): List<List<Int>> {
+    fun levelOrder(root: LcBinTreeNode?): List<List<Int>> {
         val ans = mutableListOf<List<Int>>()
         root ?: return ans
-        val queue = ArrayDeque<Pair<LcTreeNode, Int>>()
+        val queue = ArrayDeque<Pair<LcBinTreeNode, Int>>()
         queue.addLast(root to 0)
         var currLevel = 0
         var currAns = mutableListOf<Int>()
@@ -48,11 +48,11 @@ class Solution {
 
 fun main() {
     arrayOf(
-            LcTreeNode.create(3, 9, 20, null, null, 15, 7) to listOf(listOf(3), listOf(9, 20), listOf(15, 7)),
-            LcTreeNode.create(2, 1) to listOf(listOf(2), listOf(1)),
-            LcTreeNode.create(2, 1, null, null, 3) to listOf(listOf(2), listOf(1), listOf(3)),
-            LcTreeNode.create(1) to listOf(listOf(1)),
-            LcTreeNode.create() to listOf(),
+            LcBinTreeNode.create(3, 9, 20, null, null, 15, 7) to listOf(listOf(3), listOf(9, 20), listOf(15, 7)),
+            LcBinTreeNode.create(2, 1) to listOf(listOf(2), listOf(1)),
+            LcBinTreeNode.create(2, 1, null, null, 3) to listOf(listOf(2), listOf(1), listOf(3)),
+            LcBinTreeNode.create(1) to listOf(listOf(1)),
+            LcBinTreeNode.create() to listOf(),
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().levelOrder(input))
     }

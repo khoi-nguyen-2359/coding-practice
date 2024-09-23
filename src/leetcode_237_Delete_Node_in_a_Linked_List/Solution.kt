@@ -1,12 +1,12 @@
 package leetcode_237_Delete_Node_in_a_Linked_List
 
-import ListNode
+import LcLinkedListNode
 
 class Solution {
-    fun deleteNode(node: ListNode?) {
+    fun deleteNode(node: LcLinkedListNode?) {
         var curr = node
         var next = curr?.next
-        var prev: ListNode? = null
+        var prev: LcLinkedListNode? = null
         while (curr != null && next != null) {
             curr.`val` = next.`val`
             prev = curr

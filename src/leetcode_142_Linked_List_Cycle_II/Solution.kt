@@ -1,6 +1,6 @@
 package leetcode_142_Linked_List_Cycle_II
 
-import ListNode
+import LcLinkedListNode
 
 /**
  * Example:
@@ -13,12 +13,12 @@ import ListNode
  */
 
 class Solution {
-    fun detectCycle(head: ListNode?): ListNode? {
+    fun detectCycle(head: LcLinkedListNode?): LcLinkedListNode? {
         val intersectPoint = intersectPoint(head)
                 ?: return null
 
         var p1 = head
-        var p2: ListNode? = intersectPoint
+        var p2: LcLinkedListNode? = intersectPoint
         while (p1 != p2) {
             p1 = p1?.next
             p2 = p2?.next
@@ -26,7 +26,7 @@ class Solution {
         return p1
     }
 
-    private fun intersectPoint(head: ListNode?): ListNode? {
+    private fun intersectPoint(head: LcLinkedListNode?): LcLinkedListNode? {
         var slow = head
         var fast = head
         do {
@@ -39,7 +39,7 @@ class Solution {
 }
 
 fun main() {
-    val head = ListNode.create(1,2,3,4)
+    val head = LcLinkedListNode.create(1,2,3,4)
     head?.next?.next?.next?.next = head?.next?.next
     Solution().detectCycle(head)?.`val`?.let(::println)
 }

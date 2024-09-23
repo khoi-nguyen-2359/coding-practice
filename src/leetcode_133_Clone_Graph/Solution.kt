@@ -1,6 +1,6 @@
 package leetcode_133_Clone_Graph
 
-import Node
+import LcGraphNode
 import java.util.Stack
 
 /**
@@ -11,21 +11,21 @@ import java.util.Stack
  */
 
 class Solution {
-    fun cloneGraph(node: Node?): Node? {
+    fun cloneGraph(node: LcGraphNode?): LcGraphNode? {
         node ?: return null
-        val nodeMap = mutableMapOf<Int, Node>()
-        val stack = Stack<Node>()
+        val nodeMap = mutableMapOf<Int, LcGraphNode>()
+        val stack = Stack<LcGraphNode>()
         stack.push(node)
         while (stack.isNotEmpty()) {
             val pop = stack.pop()
-            val cloneNode = nodeMap.computeIfAbsent(pop.`val`) { Node(pop.`val`) }
+            val cloneNode = nodeMap.computeIfAbsent(pop.`val`) { LcGraphNode(pop.`val`) }
             for (neighborNode in pop.neighbors) {
                 val neighborVal = neighborNode?.`val` ?: continue
 
                 if (!nodeMap.contains(neighborVal)) {
                     stack.push(neighborNode)
                 }
-                cloneNode.neighbors.add(nodeMap.computeIfAbsent(neighborVal) { Node(neighborVal) })
+                cloneNode.neighbors.add(nodeMap.computeIfAbsent(neighborVal) { LcGraphNode(neighborVal) })
             }
         }
 
@@ -42,6 +42,6 @@ fun main() {
                     listOf(1,3),
             )
     ).forEach {
-        Solution().cloneGraph(Node.fromAdjList(it))
+        Solution().cloneGraph(LcGraphNode.fromAdjList(it))
     }
 }

@@ -1,9 +1,9 @@
 package leetcode_234_palindrome_linked_list.attempt_3
 
-import ListNode
+import LcLinkedListNode
 
 class Solution {
-    fun isPalindrome(head: ListNode?): Boolean {
+    fun isPalindrome(head: LcLinkedListNode?): Boolean {
         val reversedHead = reverse(head)
         var currOriginal = head
         var currReversed = reversedHead
@@ -19,11 +19,11 @@ class Solution {
         return true
     }
 
-    private fun reverse(head: ListNode?): ListNode? {
+    private fun reverse(head: LcLinkedListNode?): LcLinkedListNode? {
         var curr = head
-        var next: ListNode? = null
+        var next: LcLinkedListNode? = null
         while (curr != null) {
-            val node = ListNode(curr.`val`)
+            val node = LcLinkedListNode(curr.`val`)
             node.next = next
             next = node
             curr = curr.next
@@ -33,7 +33,7 @@ class Solution {
 }
 
 class SolutionInPlace {
-    fun isPalindrome(node: ListNode?): Boolean {
+    fun isPalindrome(node: LcLinkedListNode?): Boolean {
         // find the second half's head
         var secondHead = node
         var i = node
@@ -43,7 +43,7 @@ class SolutionInPlace {
         }
 
         // reverse the second half
-        var reversedSecondHead: ListNode? = null
+        var reversedSecondHead: LcLinkedListNode? = null
         i = secondHead
         while (i != null) {
             val tmp = i.next

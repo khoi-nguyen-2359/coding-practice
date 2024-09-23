@@ -1,12 +1,12 @@
 package leetcode_101_Symmetric_Tree
 
-import LcTreeNode
+import LcBinTreeNode
 import java.util.LinkedList
 import kotlin.test.assertEquals
 
 class Solution {
     private class Recursively {
-        fun check(node1: LcTreeNode?, node2: LcTreeNode?): Boolean {
+        fun check(node1: LcBinTreeNode?, node2: LcBinTreeNode?): Boolean {
             if (node1 == null && node2 == null) {
                 return true
             }
@@ -18,8 +18,8 @@ class Solution {
     }
 
     private class Iteratively {
-        fun check(root: LcTreeNode?): Boolean {
-            val queue = LinkedList<LcTreeNode?>()
+        fun check(root: LcBinTreeNode?): Boolean {
+            val queue = LinkedList<LcBinTreeNode?>()
             queue.add(root?.left)
             queue.add(root?.right)
             while (queue.size >= 2) {
@@ -40,19 +40,19 @@ class Solution {
             return true
         }
     }
-    fun isSymmetric(root: LcTreeNode?): Boolean {
+    fun isSymmetric(root: LcBinTreeNode?): Boolean {
         return Iteratively().check(root)
     }
 }
 
 fun main() {
     arrayOf(
-        LcTreeNode.create(1,2,2,3,4,4,3) to true,
-        LcTreeNode.create(1,2,2,3,4,4,2) to false,
-        LcTreeNode.create(1,2,2) to true,
-        LcTreeNode.create(1,2,2,1,null,null,null,3) to false,
-        LcTreeNode.create(1,2,2,null,3,null,3) to false,
-        LcTreeNode.create(1) to true,
+        LcBinTreeNode.create(1,2,2,3,4,4,3) to true,
+        LcBinTreeNode.create(1,2,2,3,4,4,2) to false,
+        LcBinTreeNode.create(1,2,2) to true,
+        LcBinTreeNode.create(1,2,2,1,null,null,null,3) to false,
+        LcBinTreeNode.create(1,2,2,null,3,null,3) to false,
+        LcBinTreeNode.create(1) to true,
     ).forEach { (inp, exp) ->
         assertEquals(exp, Solution().isSymmetric(inp))
     }

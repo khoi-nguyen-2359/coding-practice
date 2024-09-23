@@ -1,6 +1,6 @@
 package leetcode_114_Flatten_Binary_Tree_to_Linked_List
 
-import LcTreeNode
+import LcBinTreeNode
 
 /**
  * Example:
@@ -13,15 +13,15 @@ import LcTreeNode
  * }
  */
 class Solution {
-    private val nodes = mutableListOf<LcTreeNode>()
-    fun flatten(root: LcTreeNode?) {
+    private val nodes = mutableListOf<LcBinTreeNode>()
+    fun flatten(root: LcBinTreeNode?) {
         if (root == null) {
             return
         }
 
         preOrder(root)
 
-        var curr: LcTreeNode? = root
+        var curr: LcBinTreeNode? = root
         root.left = null
         for (i in 1 until nodes.size) {
             nodes[i].left = null
@@ -30,7 +30,7 @@ class Solution {
         }
     }
 
-    private fun preOrder(node: LcTreeNode) {
+    private fun preOrder(node: LcBinTreeNode) {
         nodes.add(node)
         node.left?.let(::preOrder)
         node.right?.let(::preOrder)
@@ -38,14 +38,14 @@ class Solution {
 }
 
 class SolutionRecursive {
-    fun flatten(root: LcTreeNode?) {
+    fun flatten(root: LcBinTreeNode?) {
         if (root == null) {
             return
         }
         internalFlatten(root)
     }
 
-    private fun internalFlatten(node: LcTreeNode): Pair<LcTreeNode, LcTreeNode> {
+    private fun internalFlatten(node: LcBinTreeNode): Pair<LcBinTreeNode, LcBinTreeNode> {
         val flatLeft = node.left?.let(::internalFlatten)
         val flatRight = node.right?.let(::internalFlatten)
 
@@ -56,14 +56,14 @@ class SolutionRecursive {
             flatLeft.second.right = tmp
         }
 
-        val tail: LcTreeNode? = flatRight?.second ?: flatLeft?.second
+        val tail: LcBinTreeNode? = flatRight?.second ?: flatLeft?.second
 
         return node to (tail ?: node)
     }
 }
 
 class SolutionIterative {
-    fun flatten(root: LcTreeNode?) {
+    fun flatten(root: LcBinTreeNode?) {
         if (root == null) {
             return
         }

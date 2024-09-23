@@ -1,6 +1,6 @@
 package leetcode_83_Remove_Duplicates_from_Sorted_List
 
-import ListNode
+import LcLinkedListNode
 
 /**
  * Example:
@@ -12,9 +12,9 @@ import ListNode
  * }
  */
 class Solution {
-    fun deleteDuplicates(head: ListNode?): ListNode? {
+    fun deleteDuplicates(head: LcLinkedListNode?): LcLinkedListNode? {
         var curr = head
-        var prev: ListNode? = null
+        var prev: LcLinkedListNode? = null
         while (curr != null) {
             if (curr.`val` == prev?.`val`) {
                 prev.next = curr.next

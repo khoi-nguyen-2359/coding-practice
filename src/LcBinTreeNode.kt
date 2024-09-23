@@ -1,26 +1,25 @@
-import java.util.LinkedList
 import java.util.Stack
 
 /**
  * Common class for TreeNode in leetcode problems.
  */
-class LcTreeNode(var `val`: Int) {
-    var left: LcTreeNode? = null
-    var right: LcTreeNode? = null
+class LcBinTreeNode(var `val`: Int) {
+    var left: LcBinTreeNode? = null
+    var right: LcBinTreeNode? = null
 
     override fun toString(): String {
         return "$`val`"
     }
 
     override fun equals(other: Any?): Boolean {
-        if (other !is LcTreeNode) {
+        if (other !is LcBinTreeNode) {
             return false
         }
         return compareTree(other)
     }
 
     fun printAllPaths() {
-        val stack = Stack<Pair<LcTreeNode, Int>>()
+        val stack = Stack<Pair<LcBinTreeNode, Int>>()
         stack.add(this to 2)
         while (stack.isNotEmpty()) {
             val (node, state) = stack.pop()
@@ -44,7 +43,7 @@ class LcTreeNode(var `val`: Int) {
         }
     }
 
-    private fun compareTree(other: LcTreeNode?): Boolean {
+    private fun compareTree(other: LcBinTreeNode?): Boolean {
         if (`val` != other?.`val`) {
             return false
         }
@@ -54,27 +53,27 @@ class LcTreeNode(var `val`: Int) {
     }
 
     companion object {
-        fun create(vararg values: Int?): LcTreeNode? {
+        fun create(vararg values: Int?): LcBinTreeNode? {
             if (values.isEmpty()) {
                 return null
             }
-            val nodeArray = Array<LcTreeNode?>(values.size) { null }
+            val nodeArray = Array<LcBinTreeNode?>(values.size) { null }
             for (i in values.indices) {
                 val nodeValue = values[i]
                 if (nodeArray[i] == null && nodeValue != null) {
-                    nodeArray[i] = LcTreeNode(nodeValue)
+                    nodeArray[i] = LcBinTreeNode(nodeValue)
                 }
                 val leftValue = values.getOrNull(2 * i + 1)
                 val rightValue = values.getOrNull(2 * i + 2)
-                var leftNode: LcTreeNode? = null
+                var leftNode: LcBinTreeNode? = null
                 if (leftValue != null) {
-                    leftNode = LcTreeNode(leftValue)
+                    leftNode = LcBinTreeNode(leftValue)
                     nodeArray[2 * i + 1] = leftNode
                 }
 
-                var rightNode: LcTreeNode? = null
+                var rightNode: LcBinTreeNode? = null
                 if (rightValue != null) {
-                    rightNode = LcTreeNode(rightValue)
+                    rightNode = LcBinTreeNode(rightValue)
                     nodeArray[2 * i + 2] = rightNode
                 }
                 nodeArray[i]?.left = leftNode

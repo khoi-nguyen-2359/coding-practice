@@ -1,6 +1,6 @@
 package leetcode_112_path_sum
 
-import LcTreeNode as TreeNode
+import LcBinTreeNode as TreeNode
 
 /**
  * Example:

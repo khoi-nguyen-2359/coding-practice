@@ -1,7 +1,7 @@
 package leetcode_145_Binary_Tree_Postorder_Traversal
 
 import java.util.*
-import LcTreeNode as TreeNode
+import LcBinTreeNode as TreeNode
 
 /**
  * Example:

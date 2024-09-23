@@ -1,6 +1,6 @@
 package leetcode_108_Convert_Sorted_Array_to_Binary_Search_Tree
 
-import LcTreeNode as TreeNode
+import LcBinTreeNode as TreeNode
 
 /**
  * Example:

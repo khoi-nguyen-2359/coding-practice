@@ -1,6 +1,6 @@
 package leetcode_1290_Convert_Binary_Number_in_a_Linked_List_to_Integer.attempt_1
 
-import ListNode
+import LcLinkedListNode
 
 /**
  * Example:
@@ -12,7 +12,7 @@ import ListNode
  * }
  */
 class Solution {
-    fun getDecimalValue(head: ListNode?): Int {
+    fun getDecimalValue(head: LcLinkedListNode?): Int {
         var curr = head
         var result = 0
         while (curr != null) {
@@ -25,10 +25,10 @@ class Solution {
 
 fun main() {
     arrayOf(
-            ListNode.create(1,0,1),
-            ListNode.create(0),
-            ListNode.create(1,0),
-            ListNode.create(1),
+            LcLinkedListNode.create(1,0,1),
+            LcLinkedListNode.create(0),
+            LcLinkedListNode.create(1,0),
+            LcLinkedListNode.create(1),
     ).forEach {
         Solution().getDecimalValue(it).let(::println)
     }

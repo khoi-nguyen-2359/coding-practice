@@ -1,18 +1,18 @@
 package leetcode_2_add_two_nums.attempt_2
 
-import ListNode
+import LcLinkedListNode
 import kotlin.test.assertTrue
 
 class Solution {
-    fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
-        val result = ListNode(-1)
+    fun addTwoNumbers(l1: LcLinkedListNode?, l2: LcLinkedListNode?): LcLinkedListNode? {
+        val result = LcLinkedListNode(-1)
         var c1 = l1
         var c2 = l2
-        var c3: ListNode? = result
+        var c3: LcLinkedListNode? = result
         var carry = 0
         while (c1 != null || c2 != null) {
             val s = (c1?.`val` ?: 0) + (c2?.`val` ?: 0) + carry
-            val tmp = ListNode(s % 10)
+            val tmp = LcLinkedListNode(s % 10)
             c3?.next = tmp
             c3 = tmp
             carry = s / 10
@@ -20,7 +20,7 @@ class Solution {
             c2 = c2?.next
         }
         if (carry > 0) {
-            c3?.next = ListNode(carry)
+            c3?.next = LcLinkedListNode(carry)
         }
         return result.next
     }
@@ -28,10 +28,10 @@ class Solution {
 
 fun main() {
     arrayOf(
-            ListNode.create(2, 4, 3) to ListNode.create(5, 6, 4) to ListNode.create(7, 0, 8),
-            ListNode.create(0) to ListNode.create(0) to ListNode.create(0),
-            ListNode.create(9, 9, 9, 9, 9, 9, 9) to ListNode.create(9, 9, 9, 9) to ListNode.create(8, 9, 9, 9, 0, 0, 0, 1),
-            ListNode.create(9, 9, 9, 9, 9, 9, 9) to ListNode.create(0) to ListNode.create(9, 9, 9, 9, 9, 9, 9),
+            LcLinkedListNode.create(2, 4, 3) to LcLinkedListNode.create(5, 6, 4) to LcLinkedListNode.create(7, 0, 8),
+            LcLinkedListNode.create(0) to LcLinkedListNode.create(0) to LcLinkedListNode.create(0),
+            LcLinkedListNode.create(9, 9, 9, 9, 9, 9, 9) to LcLinkedListNode.create(9, 9, 9, 9) to LcLinkedListNode.create(8, 9, 9, 9, 0, 0, 0, 1),
+            LcLinkedListNode.create(9, 9, 9, 9, 9, 9, 9) to LcLinkedListNode.create(0) to LcLinkedListNode.create(9, 9, 9, 9, 9, 9, 9),
     ).forEach {
         assertTrue(it.second?.isEqual(Solution().addTwoNumbers(it.first.first, it.first.second)) == true)
     }

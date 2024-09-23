@@ -1,16 +1,16 @@
 package leetcode_124_Binary_Tree_Maximum_Path_Sum.attempt_2;
 
-import LcTreeNode
+import LcBinTreeNode
 import kotlin.test.assertEquals
 
 class Solution {
     private var maxPathSum = Int.MIN_VALUE
-    fun maxPathSum(root: LcTreeNode?): Int {
+    fun maxPathSum(root: LcBinTreeNode?): Int {
         maxGain(root)
         return maxPathSum
     }
 
-    private fun maxGain(node: LcTreeNode?): Int {
+    private fun maxGain(node: LcBinTreeNode?): Int {
         val nodeVal = node?.`val` ?: 0
         val leftMaxGain = node?.left?.let(::maxGain) ?: 0
         val rightMaxGain = node?.right?.let(::maxGain) ?: 0
@@ -25,8 +25,8 @@ class Solution {
 
 fun main() {
     arrayOf(
-            LcTreeNode.create(1, 2, 3) to 6,
-            LcTreeNode.create(-10, 9, 20, null, null, 15, 7) to 42,
+            LcBinTreeNode.create(1, 2, 3) to 6,
+            LcBinTreeNode.create(-10, 9, 20, null, null, 15, 7) to 42,
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().maxPathSum(input))
     }

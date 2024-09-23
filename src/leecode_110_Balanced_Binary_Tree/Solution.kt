@@ -1,6 +1,6 @@
 package leecode_110_Balanced_Binary_Tree
 
-import LcTreeNode
+import LcBinTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -14,11 +14,11 @@ import kotlin.test.assertEquals
  * }
  */
 class Solution {
-    fun isBalanced(root: LcTreeNode?): Boolean {
+    fun isBalanced(root: LcBinTreeNode?): Boolean {
         return height(root) != -1
     }
 
-    private fun height(node: LcTreeNode?): Int {
+    private fun height(node: LcBinTreeNode?): Int {
         if (node == null) {
             return 0
         }
@@ -34,11 +34,11 @@ class Solution {
 
 fun main() {
     arrayOf(
-            LcTreeNode.create(3,9,20,null,null,15,7) to true,
-            LcTreeNode.create(1,2,2,3,3,null,null,4,4) to false,
-            LcTreeNode.create() to true,
-            LcTreeNode.create(1,2,3,4,5,null,6,7,null,null,null,null,null,8) to false,
-            LcTreeNode.create(1,2,2,3,null,null,3,4,null,null,null,null,null,4) to false,
+            LcBinTreeNode.create(3,9,20,null,null,15,7) to true,
+            LcBinTreeNode.create(1,2,2,3,3,null,null,4,4) to false,
+            LcBinTreeNode.create() to true,
+            LcBinTreeNode.create(1,2,3,4,5,null,6,7,null,null,null,null,null,8) to false,
+            LcBinTreeNode.create(1,2,2,3,null,null,3,4,null,null,null,null,null,4) to false,
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().isBalanced(input))
     }

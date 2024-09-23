@@ -1,6 +1,6 @@
 package leetcode_230_Kth_Smallest_Element_in_a_BST
 
-import LcTreeNode
+import LcBinTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -16,14 +16,14 @@ import kotlin.test.assertEquals
 class Solution {
     private var ans = -1
     private var k = 0
-    fun kthSmallest(root: LcTreeNode?, k: Int): Int {
+    fun kthSmallest(root: LcBinTreeNode?, k: Int): Int {
         root ?: return ans
         this.k = k
         inOrderTraverse(root)
         return ans
     }
 
-    private fun inOrderTraverse(node: LcTreeNode) {
+    private fun inOrderTraverse(node: LcBinTreeNode) {
         node.left?.let(::inOrderTraverse)
         // node
         --k
@@ -36,9 +36,9 @@ class Solution {
 
 fun main() {
     arrayOf(
-            LcTreeNode.create(3, 1, 4, null, 2) to 1 to 1,
-            LcTreeNode.create(3) to 1 to 3,
-            LcTreeNode.create(5, 3, 6, 2, 4, null, null, 1) to 3 to 3,
+            LcBinTreeNode.create(3, 1, 4, null, 2) to 1 to 1,
+            LcBinTreeNode.create(3) to 1 to 3,
+            LcBinTreeNode.create(5, 3, 6, 2, 4, null, null, 1) to 3 to 3,
     ).forEach { (input, exp) ->
         assertEquals(exp, Solution().kthSmallest(input.first, input.second))
     }

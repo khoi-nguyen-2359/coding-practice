@@ -1,6 +1,6 @@
 package leetcode_530_minimum_absolute_difference_in_bst
 
-import LcTreeNode as TreeNode
+import LcBinTreeNode as TreeNode
 
 /**
  * Example:

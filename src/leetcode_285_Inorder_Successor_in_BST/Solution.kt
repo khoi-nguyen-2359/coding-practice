@@ -1,6 +1,6 @@
 package leetcode_285_Inorder_Successor_in_BST
 
-import LcTreeNode
+import LcBinTreeNode
 import kotlin.test.assertEquals
 
 /**
@@ -33,11 +33,11 @@ import kotlin.test.assertEquals
  */
 
 class Solution {
-    fun inorderSuccessor(root: LcTreeNode?, p: LcTreeNode?): LcTreeNode? {
+    fun inorderSuccessor(root: LcBinTreeNode?, p: LcBinTreeNode?): LcBinTreeNode? {
         return findRecursive(root, p).takeIf { it?.`val` != p?.`val` }
     }
 
-    private fun findRecursive(node: LcTreeNode?, p: LcTreeNode?): LcTreeNode? {
+    private fun findRecursive(node: LcBinTreeNode?, p: LcBinTreeNode?): LcBinTreeNode? {
         if (node == null) {
             return null
         }
@@ -77,8 +77,8 @@ class Solution {
         return null
     }
 
-    private fun findLeftMost(root: LcTreeNode?): LcTreeNode? {
-        var node: LcTreeNode? = root
+    private fun findLeftMost(root: LcBinTreeNode?): LcBinTreeNode? {
+        var node: LcBinTreeNode? = root
         while (node?.left != null) {
             node = node.left
         }
@@ -89,10 +89,10 @@ class Solution {
 
 fun main() {
     arrayOf(
-            LcTreeNode.create(2, 1, 3) to 1 to LcTreeNode.create(2, 1, 3),
-            LcTreeNode.create(5, 3, 6, 2, 4, null, null, 1) to 6 to null,
-            LcTreeNode.create(5, 3, 6, 1, 4, null, null, null, 2) to 4 to LcTreeNode.create(5, 3, 6, 1, 4, null, null, null, 2),
+            LcBinTreeNode.create(2, 1, 3) to 1 to LcBinTreeNode.create(2, 1, 3),
+            LcBinTreeNode.create(5, 3, 6, 2, 4, null, null, 1) to 6 to null,
+            LcBinTreeNode.create(5, 3, 6, 1, 4, null, null, null, 2) to 4 to LcBinTreeNode.create(5, 3, 6, 1, 4, null, null, null, 2),
     ).forEach { (input, exp) ->
-        assertEquals(exp, Solution().inorderSuccessor(input.first, LcTreeNode(input.second)))
+        assertEquals(exp, Solution().inorderSuccessor(input.first, LcBinTreeNode(input.second)))
     }
 }

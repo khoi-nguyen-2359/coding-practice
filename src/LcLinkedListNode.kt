@@ -1,8 +1,8 @@
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
+class LcLinkedListNode(var `val`: Int) {
+    var next: LcLinkedListNode? = null
 
     fun print() {
-        var curr: ListNode? = this
+        var curr: LcLinkedListNode? = this
         while (curr != null) {
             print(curr.`val`)
             curr = curr.next
@@ -12,9 +12,9 @@ class ListNode(var `val`: Int) {
         }
     }
 
-    fun isEqual(other: ListNode?): Boolean {
-        var c1: ListNode? = this
-        var c2: ListNode? = other
+    fun isEqual(other: LcLinkedListNode?): Boolean {
+        var c1: LcLinkedListNode? = this
+        var c2: LcLinkedListNode? = other
         while (c1 != null && c2 != null && c1.`val` == c2.`val`) {
             c1 = c1.next
             c2 = c2.next
@@ -24,14 +24,14 @@ class ListNode(var `val`: Int) {
     }
 
     companion object {
-        fun create(vararg values: Int): ListNode? {
+        fun create(vararg values: Int): LcLinkedListNode? {
             if (values.isEmpty()) {
                 return null
             }
-            val result = ListNode(values[0])
-            var c: ListNode? = result
+            val result = LcLinkedListNode(values[0])
+            var c: LcLinkedListNode? = result
             for (i in 1 until values.size) {
-                c?.next = ListNode(values[i])
+                c?.next = LcLinkedListNode(values[i])
                 c = c?.next
             }
 

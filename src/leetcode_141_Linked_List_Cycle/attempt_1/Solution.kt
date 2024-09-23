@@ -1,6 +1,6 @@
 package leetcode_141_Linked_List_Cycle.attempt_1
 
-import ListNode
+import LcLinkedListNode
 
 /**
  * Example:
@@ -13,7 +13,7 @@ import ListNode
  */
 
 class Solution {
-    fun hasCycle(head: ListNode?): Boolean {
+    fun hasCycle(head: LcLinkedListNode?): Boolean {
         var slow = head
         var fast = head
         do {
@@ -26,7 +26,7 @@ class Solution {
 }
 
 fun main() {
-    val head = ListNode.create(1)
+    val head = LcLinkedListNode.create(1)
     head?.next = head
     Solution().hasCycle(head).let(::println)
 }

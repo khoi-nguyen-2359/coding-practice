@@ -2,5 +2,6 @@
 *.iml
 out/
 Playground.kt
+JsPlayground.js
 lib/
 src/scratch/

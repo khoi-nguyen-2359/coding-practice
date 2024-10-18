@@ -1,3 +1,5 @@
+const { ListNode, LinkedList } = require("../../LcListNode")
+
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -8,12 +10,7 @@
 /**
  * @param {ListNode} head
  * @return {ListNode}
- * 
- * 1 -> 2 -> 3 -> 4
- * 1 <- 2 <- 3 <- 4
  */
-const { ListNode, LinkedList } = require("../../LcListNode")
-
 var reverseList = function (head) {
     var prev = null
     var curr = head

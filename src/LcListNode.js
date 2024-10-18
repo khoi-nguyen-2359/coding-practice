@@ -1,14 +1,11 @@
-class LcListNode {constructor(val, next) {
-        this.val = (val === undefined ? 0 : val)
-        this.next = (next === undefined ? null : next)
+class LcListNode {
+    constructor(val, next) {
+        this.val = val
+        this.next = next
     }
 
     logList() {
-        if (this === LcListNode.EMPTY) {
-            console.log("EMPTY LIST")
-        } else {
-            console.log(this.#logListInternal(this))
-        }
+        console.log(this.toArray().join('->'))
     }
 
     toArray() {
@@ -21,24 +18,11 @@ class LcListNode {constructor(val, next) {
         return arr
     }
 
-    #logListInternal(node) {
-        let log = node.val
-        if (node.next) {
-            log += ' -> ' + this.#logListInternal(node.next)
-        }
-        return log
-    }
-
-    static EMPTY = new LcListNode()
-
     static ListNode(val, next) {
-        return LcListNode(val, next)
+        return new LcListNode(val, next)
     }
 
     static fromArray(...nums) {
-        if (nums.length == 0) {
-            return LcListNode.EMPTY
-        }
         var prev = new LcListNode(nums[0])
         var root = prev
         for (var i = 1; i < nums.length; ++i) {

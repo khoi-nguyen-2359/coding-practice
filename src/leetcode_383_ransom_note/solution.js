@@ -4,6 +4,7 @@
  * @return {boolean}
  */
 var canConstruct = function (ransomNote, magazine) {
+    // time complexity with this?
     if (magazine.length < ransomNote.length) {
         return false
     }

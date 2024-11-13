@@ -11,10 +11,18 @@ class LcTreeNode {
     }
 
     static from(values) {
-        let nodes = values.map(v => new LcTreeNode(v))
+        let nodes = values.map(v => {
+            if (v) {
+                return new LcTreeNode(v)
+            } else {
+                return null
+            }
+        })
         nodes.forEach((n, i) => {
-            n.left = nodes[2 * i + 1]
-            n.right = nodes[2 * i + 2]
+            if (n) {
+                n.left = nodes[2 * i + 1]
+                n.right = nodes[2 * i + 2]
+            }
         });
         return nodes[0]
     }
